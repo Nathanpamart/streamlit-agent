@@ -28,8 +28,8 @@ RUN poetry install --without dev --no-root && rm -rf $POETRY_CACHE_DIR
 # Install system-level dependencies required by Playwright
 RUN playwright install-deps
 
-# Install Playwright browsers
-RUN poetry run playwright install
+# Install Playwright browsers at system-level
+RUN playwright install
 
 # The runtime image
 FROM python:3.11-slim-buster as runtime
