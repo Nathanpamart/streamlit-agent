@@ -17,6 +17,11 @@ COPY pyproject.toml poetry.lock ./
 
 RUN poetry install --without dev --no-root && rm -rf $POETRY_CACHE_DIR
 
+RUN sudo apt-get update && sudo apt-get install -y libatk-bridge2.0-0 libxkbcommon0 libatspi2.0-0 libgbm1
+
+RUN playwright install
+RUN playwright install-deps
+
 # The runtime image, used to just run the code provided its virtual environment
 FROM python:3.11-slim-buster as runtime
 
