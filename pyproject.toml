@@ -11,7 +11,7 @@ packages = [{include = "streamlit_agent"}]
 python = ">=3.10,<4.0"
 langchain = {version = ">=0.1.0"}
 openai = ">=1.6.1"
-duckduckgo-search = ">4.0"
+duckduckgo-search = "^4.2"
 pypdf = "^3.12.2"
 sentence-transformers = "^2.2.2"
 torch = ">=2.0.0, !=2.0.1"
@@ -26,6 +26,8 @@ langchain-openai = "^0.0.2.post1"
 numexpr = "^2.8.8"
 langchainhub = "^0.1.14"
 playwright = "^1.41.0"
+beautifu lsoup4 = "^4.12.2"
+html2text = "^2020.1.16"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
