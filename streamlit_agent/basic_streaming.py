@@ -7,6 +7,7 @@ from langchain_openai import ChatOpenAI
 
 import streamlit as st
 
+
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container, initial_text=""):
         self.container = container
@@ -56,11 +57,10 @@ import pprint
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_transformers import Html2TextTransformer
 from langchain_community.document_loaders import AsyncHtmlLoader
-from langchain_community.document_loaders import AsyncChromiumLoader
 from langchain_community.document_transformers import BeautifulSoupTransformer
 
 def scrape_with_playwright(urls):
-    loader = AsyncChromiumLoader(urls)
+    loader = AsyncHtmlLoader(urls)
     docs = loader.load()
     bs_transformer = BeautifulSoupTransformer()
     html2text = Html2TextTransformer()
