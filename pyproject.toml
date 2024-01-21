@@ -26,7 +26,7 @@ langchain-openai = "^0.0.2.post1"
 numexpr = "^2.8.8"
 langchainhub = "^0.1.14"
 playwright = "^1.41.0"
-beautifu lsoup4 = "^4.12.2"
+beautifulsoup4 = "^4.12.2"
 html2text = "^2020.1.16"
 
 [tool.poetry.group.dev.dependencies]
