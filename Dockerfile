@@ -34,8 +34,7 @@ RUN apt-get update && apt-get install -y \
     libatk-bridge2.0-0 \
     libxkbcommon0 \
     libatspi2.0-0 \
-    libgbm1 \
-    wget
+    libgbm1
 
 # Install system-level dependencies required by Playwright
 RUN playwright install-deps
