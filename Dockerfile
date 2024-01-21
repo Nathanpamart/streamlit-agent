@@ -26,10 +26,7 @@ COPY pyproject.toml poetry.lock ./
 # Install Python dependencies including Playwright
 RUN poetry install --without dev --no-root && rm -rf $POETRY_CACHE_DIR
 
-# The runtime image
-FROM python:3.11-slim-buster as runtime
-
-# Install runtime system dependencies required by Playwright
+# Install system dependencies required by Playwright
 RUN apt-get update && apt-get install -y \
     libatk-bridge2.0-0 \
     libxkbcommon0 \
@@ -37,7 +34,10 @@ RUN apt-get update && apt-get install -y \
     libgbm1
 
 # Install system-level dependencies required by Playwright
-RUN playwright install-deps
+RUN npx -y playwright@1.41.0 install --with-deps
+
+# The runtime image
+FROM python:3.11-slim-buster as runtime
 
 ENV VIRTUAL_ENV=/app/.venv \
     PATH="/app/.venv/bin:$PATH"
