@@ -17,14 +17,13 @@ class StreamHandler(BaseCallbackHandler):
         self.text += token
         self.container.markdown(self.text)
 
-st.set_page_config(page_title="StreamlitChatMessageHistory", page_icon="📖")
-st.title("📖 StreamlitChatMessageHistory")
+st.set_page_config(page_title="UKIO Chatbot Demo", page_icon="📖")
+st.title("📖 UKIO Chatbot Demo")
 
 """
-A basic example of using StreamlitChatMessageHistory to help LLMChain remember messages in a conversation.
-The messages are stored in Session State across re-runs automatically. You can view the contents of Session State
-in the expander below. View the
-[source code for this app](https://github.com/langchain-ai/streamlit-agent/blob/main/streamlit_agent/basic_memory.py).
+A basic example of a chatbot to help customers learn more about UKIO's apartments through a natural language interface.
+Currently, the bot is equipped with the ability to get information from UKIO's website, and from web search.
+It doesn't have any additional information.
 """
 
 # Set up session state
@@ -32,13 +31,12 @@ in the expander below. View the
 if "messages" not in st.session_state:
     st.session_state["messages"] = [ChatMessage(role="assistant", content="How can I help you?")]
 
-
 # Set up memory
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
 if len(msgs.messages) == 0:
     msgs.add_ai_message("How can I help you?")
 
-view_messages = st.expander("View the message contents in session state")
+#view_messages = st.expander("View the message contents in session state")
 
 # Get an OpenAI API Key before continuing
 if "OPENAI_API_KEY" in st.secrets:
@@ -208,13 +206,13 @@ if prompt := st.chat_input():
         response = chain_with_history.invoke({"input": prompt}, config)
 
 # Draw the messages at the end, so newly generated ones show up immediately
-with view_messages:
-    """
-    Message History initialized with:
-    ```python
-    msgs = StreamlitChatMessageHistory(key="langchain_messages")
-    ```
-
-    Contents of `st.session_state.langchain_messages`:
-    """
-    view_messages.json(st.session_state.langchain_messages)
+#with view_messages:
+#    """
+#    Message History initialized with:
+#    ```python
+#    msgs = StreamlitChatMessageHistory(key="langchain_messages")
+#    ```
+#
+#    Contents of `st.session_state.langchain_messages`:
+#    """
+#    view_messages.json(st.session_state.langchain_messages)
