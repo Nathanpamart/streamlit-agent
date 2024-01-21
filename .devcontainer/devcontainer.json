@@ -26,9 +26,9 @@
     "postCreateCommand": "pip3 install --user .",
     // Use 'postAttachCommand' to run commands after a tool has attached to the container.
     // Start the app.
-    "postAttachCommand": {
-        "server": "streamlit run streamlit_agent/mrkl_demo.py --server.enableCORS false --server.enableXsrfProtection false"
-    },
+    //"postAttachCommand": {
+    //    "server": "streamlit run streamlit_agent/basic_memory.py --server.enableCORS false --server.enableXsrfProtection false"
+    //},
     "portsAttributes": {
         "8501": {
             "label": "Application",
