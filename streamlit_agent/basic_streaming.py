@@ -26,15 +26,17 @@ Currently, the bot is equipped with the ability to get information from UKIO's w
 It doesn't have any additional information.
 """
 
+
+first_message = "Hi, I am your Ukio booking assistant. My role is to help you find the best apartments to stay with us! Let's start. Tell me about your search."
 # Set up session state
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [ChatMessage(role="assistant", content="How can I help you?")]
+    st.session_state["messages"] = [ChatMessage(role="assistant", content=first_message)]
 
 # Set up memory
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
 if len(msgs.messages) == 0:
-    msgs.add_ai_message("How can I help you?")
+    msgs.add_ai_message(first_message)
 
 #view_messages = st.expander("View the message contents in session state")
 
